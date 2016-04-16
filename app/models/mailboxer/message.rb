@@ -12,7 +12,7 @@ class Mailboxer::Message < Mailboxer::Notification
   }
 
   has_attached_file :attachment
-  validates_attachment_content_type :attachment, content_type: ["image/jpeg", "image/png", 'application/pdf']
+  validates_attachment :attachment, content_type: {content_type: ["image/jpeg", "image/png", 'application/pdf']}, size: { less_than: 10.megabytes }
 
   class << self
     #Sets the on deliver callback method.
